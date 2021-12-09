@@ -30,6 +30,7 @@ namespace AirportCorp
         public delegate double Price(double distance, double price_of_travel,double visa_price);
         public event Price PriceHandler;
 
+
         Airport_company airport_Company = new Airport_company();
  
         public Traveller() : base()

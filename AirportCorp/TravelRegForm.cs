@@ -16,8 +16,11 @@ namespace AirportCorp
     {
         List<Traveller> travellers = new List<Traveller>();
         Traveller traveller;
+        public delegate void DisplayChanges();
 
-        
+        public event DisplayChanges LbChange;
+
+
 
         public int days = 0;
         
@@ -71,6 +74,7 @@ namespace AirportCorp
 
                 //traveller.PriceHandler += Price;
 
+
                 //ITraveler tr = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
                 //MessageBox.Show($"{tr.GetAll()}");
 
@@ -105,8 +109,13 @@ namespace AirportCorp
             
         }
 
+        public void ChengesShow()
+        {
+            MessageBox.Show("Changed");
+        }
         private void TravelRegForm_Load(object sender, EventArgs e)
         {
+            LbChange += ChengesShow;
 
         }
 
@@ -125,6 +134,7 @@ namespace AirportCorp
             
         }
 
+      
         private void cbvisa_CheckedChanged(object sender, EventArgs e)
         {
             if(cbvisa.Checked == true)
@@ -166,6 +176,8 @@ namespace AirportCorp
 
         private void lbto_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+                LbChange.Invoke();
             
         }
     }
