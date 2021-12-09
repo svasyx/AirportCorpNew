@@ -52,7 +52,6 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Airport_.cs" />
     <Compile Include="Airport_company.cs" />
     <Compile Include="BusinessForm.cs">
       <SubType>Form</SubType>

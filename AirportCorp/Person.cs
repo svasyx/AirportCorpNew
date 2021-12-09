@@ -9,8 +9,9 @@ namespace AirportCorp
     [Serializable]
     public class Person : IPrintable
     {
-        protected string name_ { get; set; } = "Ivan";
-        protected string surname_ { get; set; } = "Sachno";
+        protected string _name { get; set; } = "Ivan";
+        protected string _surname
+        { get; set; } = "Sachno";
 
         public Person()
         {
@@ -25,13 +26,13 @@ namespace AirportCorp
             }
             else
             {
-                name_ = name;
-                surname_ = surname;
+                _name = name;
+                _surname = surname;
             }
         }
         public virtual string GetAll()
         {
-            return $"{name_},{surname_} ";
+            return $"{_name},{_surname} ";
         }
     }
 }

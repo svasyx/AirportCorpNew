@@ -9,38 +9,41 @@ namespace AirportCorp
     [Serializable]
     class Airport_company:IPrintable
     {
-        Dictionary<string, int> airorts = new Dictionary<string, int>();
+        Dictionary<string, Tuple<int,int,int>> airorts = new Dictionary<string, Tuple<int, int, int>>();
 
+        
         
         protected int count_of_airports { get; set; } = 0;
 
+        
 
 
         public Airport_company()
         {
-            airorts.Add("Киев", 0);
+          
+            airorts.Add("Киев", new Tuple<int, int, int> (0,0,0)) ; 
             count_of_airports++;
 
-            airorts.Add("Одеса", 580);
+            airorts.Add("Одеса", new Tuple<int, int, int>(1, 1, 1));
             count_of_airports++;
 
-            airorts.Add("Харьков", 700);
+            airorts.Add("Харьков", new Tuple<int, int, int>(3, 3, 0));
             count_of_airports++;
 
-            airorts.Add("Полтава", 340);
+            airorts.Add("Полтава", new Tuple<int, int, int>(0, 10, 11));
             count_of_airports++;
 
-            airorts.Add("Винница", 100);
+            airorts.Add("Винница", new Tuple<int, int, int>(0, 0, 15));
             count_of_airports++;
 
         }
-        public Dictionary<string, int> Getairports()
+        public Dictionary<string, Tuple<int, int, int>> Getairports()
         {
             return airorts;
         }
         public virtual string GetAll()
         {
-            foreach(KeyValuePair<string,int> keyValue in airorts)
+            foreach(KeyValuePair<string, Tuple<int, int, int>> keyValue in airorts)
             {
                 Console.WriteLine($"{keyValue.Key} {keyValue.Value}");
             }

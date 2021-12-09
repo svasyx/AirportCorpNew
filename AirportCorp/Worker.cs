@@ -13,6 +13,7 @@ namespace AirportCorp
         protected string _name { get; set; } = "admin";
         protected string _srname { get; set; } = "admin";
 
+            
 
 
         protected string _place_of_work { get; set; }
@@ -21,7 +22,7 @@ namespace AirportCorp
 
         protected string _password { get; set; }
 
-        public Worker(string name, string surname, T id,string passw,string place_of_work)
+        public Worker(string name, string surname, T id,string passw,string place_of_work):base()
         {
 
             if (String.IsNullOrEmpty(name)||String.IsNullOrEmpty(surname)|| String.IsNullOrEmpty(place_of_work)||String.IsNullOrEmpty(passw))
@@ -41,13 +42,13 @@ namespace AirportCorp
 
         }
 
-        public Worker()
+        public Worker():base()
         {
             _name = "Admin";
             _srname = "";
             _password = "admin";
             _place_of_work = "Kiev";
-            
+                
 
         }
 

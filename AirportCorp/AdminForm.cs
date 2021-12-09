@@ -14,12 +14,11 @@ namespace AirportCorp
 {
     public partial class AdminForm : Form
     {
-        Worker<string> worker;
         List<Worker<string>> workers = new List<Worker<string>>();
         List<Traveller> travellers = new List<Traveller>();
         
         int k;
-        Worker<string> mainadmin = new Worker<string>("1", "1", "1", "1","google");
+        Worker<string> mainadmin = new Worker<string>("a", "a", "admin", "admin","Kiev");
         Point point = new Point(400, 225);
         public AdminForm()
         {

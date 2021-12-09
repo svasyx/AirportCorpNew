@@ -9,9 +9,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace AirportCorp
 {
+    [Serializable]
     public partial class TravelRegForm : Form
     {
         List<Traveller> travellers = new List<Traveller>();
@@ -72,7 +72,7 @@ namespace AirportCorp
                     }
                 travellers.Add(traveller);
 
-                //traveller.PriceHandler += Price;
+                traveller.PriceHandler += Price;
 
 
                 //ITraveler tr = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
@@ -115,6 +115,7 @@ namespace AirportCorp
         }
         private void TravelRegForm_Load(object sender, EventArgs e)
         {
+            
             LbChange += ChengesShow;
 
         }
@@ -163,11 +164,10 @@ namespace AirportCorp
             this.Close();
         }
 
-        
-        //public double Price(double distance, double price_of_travel, double visa_price)
-        //{
-        //    return distance * price_of_travel + visa_price;
-        //}
+        public double Price(double distance, double price_of_travel, double visa_price)
+        {
+            return distance * price_of_travel + visa_price;
+        }
 
         private void btwrte_Click(object sender, EventArgs e)
         {
