@@ -49,6 +49,8 @@ namespace AirportCorp
             this.tppassword = new System.Windows.Forms.TextBox();
             this.pnlogin = new System.Windows.Forms.Panel();
             this.btnlogin = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.lbairports = new System.Windows.Forms.ListBox();
             this.panadm.SuspendLayout();
             this.panwork.SuspendLayout();
             this.pnstart.SuspendLayout();
@@ -68,7 +70,7 @@ namespace AirportCorp
             // lbinfo_ab
             // 
             this.lbinfo_ab.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbinfo_ab.Location = new System.Drawing.Point(16, 73);
+            this.lbinfo_ab.Location = new System.Drawing.Point(15, 129);
             this.lbinfo_ab.Name = "lbinfo_ab";
             this.lbinfo_ab.Size = new System.Drawing.Size(263, 104);
             this.lbinfo_ab.TabIndex = 8;
@@ -175,12 +177,14 @@ namespace AirportCorp
             // panwork
             // 
             this.panwork.AutoScroll = true;
+            this.panwork.Controls.Add(this.lbairports);
+            this.panwork.Controls.Add(this.button3);
             this.panwork.Controls.Add(this.button2);
             this.panwork.Controls.Add(this.lbinfo_ab);
             this.panwork.Controls.Add(this.btnprint);
-            this.panwork.Location = new System.Drawing.Point(32, 252);
+            this.panwork.Location = new System.Drawing.Point(32, 193);
             this.panwork.Name = "panwork";
-            this.panwork.Size = new System.Drawing.Size(293, 186);
+            this.panwork.Size = new System.Drawing.Size(430, 245);
             this.panwork.TabIndex = 23;
             this.panwork.Visible = false;
             this.panwork.Paint += new System.Windows.Forms.PaintEventHandler(this.panwork_Paint);
@@ -189,15 +193,16 @@ namespace AirportCorp
             // 
             this.pnstart.Controls.Add(this.btreg);
             this.pnstart.Controls.Add(this.btlog);
-            this.pnstart.Location = new System.Drawing.Point(328, 148);
+            this.pnstart.Location = new System.Drawing.Point(47, 42);
             this.pnstart.Name = "pnstart";
             this.pnstart.Size = new System.Drawing.Size(263, 80);
             this.pnstart.TabIndex = 24;
+            this.pnstart.Paint += new System.Windows.Forms.PaintEventHandler(this.pnstart_Paint);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 15);
+            this.label6.Location = new System.Drawing.Point(3, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 25;
@@ -233,7 +238,7 @@ namespace AirportCorp
             this.pnlogin.Controls.Add(this.tblogin);
             this.pnlogin.Controls.Add(this.label7);
             this.pnlogin.Controls.Add(this.label6);
-            this.pnlogin.Location = new System.Drawing.Point(333, 259);
+            this.pnlogin.Location = new System.Drawing.Point(548, 259);
             this.pnlogin.Name = "pnlogin";
             this.pnlogin.Size = new System.Drawing.Size(226, 131);
             this.pnlogin.TabIndex = 29;
@@ -248,6 +253,25 @@ namespace AirportCorp
             this.btnlogin.Text = "Login";
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(33, 66);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(191, 36);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Вивести всіх працівників по аеропрту:";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // lbairports
+            // 
+            this.lbairports.FormattingEnabled = true;
+            this.lbairports.Location = new System.Drawing.Point(230, 68);
+            this.lbairports.Name = "lbairports";
+            this.lbairports.Size = new System.Drawing.Size(120, 30);
+            this.lbairports.TabIndex = 12;
+            this.lbairports.SelectedIndexChanged += new System.EventHandler(this.lbairports_SelectedIndexChanged);
             // 
             // AdminForm
             // 
@@ -295,5 +319,7 @@ namespace AirportCorp
         private System.Windows.Forms.TextBox tppassword;
         private System.Windows.Forms.Panel pnlogin;
         private System.Windows.Forms.Button btnlogin;
+        private System.Windows.Forms.ListBox lbairports;
+        private System.Windows.Forms.Button button3;
     }
 }

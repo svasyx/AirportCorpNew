@@ -1,41 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AirportCorp
 {
     public partial class AdminForm : Form
     {
-        List<Worker<string>> workers = new List<Worker<string>>();
+        List<Worker<Airport>> workers = new List<Worker<Airport>>();
         List<Traveller> travellers = new List<Traveller>();
-        
+       static  Airport airport = new Airport();
         int k;
-        Worker<string> mainadmin = new Worker<string>("a", "a", "admin", "admin","Kiev");
-        Point point = new Point(400, 225);
+        Worker<Airport> mainadmin = new Worker<Airport>("a", "a", "admin", "admin", airport);
+        Point point = new Point(300, 150);
         public AdminForm()
         {
             InitializeComponent();
-           
+            string[] routs = { "Киев", "Одеса", "Харьков", "Полтава", "Винница" };
+            lbairports.Items.AddRange(routs);
+            lbairports.SelectedIndexChanged += lbairports_SelectedIndexChanged;
+
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            BinaryFormatter formatter12 = new BinaryFormatter();
-
-
-            using (FileStream fs = new FileStream("workers.dat", FileMode.OpenOrCreate))
-            {
-                workers = (List<Worker<string>>)formatter12.Deserialize(fs);
-            }
-
+            pnstart.Location = point;
 
         }
 
@@ -46,16 +37,16 @@ namespace AirportCorp
 
         private void btnsubmit_Click(object sender, EventArgs e)
         {
-            
-           
-           
+
+
+
         }
 
         private void btnprint_Click(object sender, EventArgs e)
         {
             lbinfo_ab.Text = "";
 
-            foreach(Worker<string> w in workers)
+            foreach (Worker<Airport> w in workers)
             {
                 lbinfo_ab.Text = lbinfo_ab.Text + $"{w.GetAll()} ;\n";
             }
@@ -63,15 +54,7 @@ namespace AirportCorp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BinaryFormatter binaryFormatter3 = new BinaryFormatter();
-
-
-            using (FileStream fs = new FileStream("workers1.dat", FileMode.Append))
-            {
-
-                binaryFormatter3.Serialize(fs, workers);
-
-            }
+                       
             this.Close();
         }
 
@@ -79,13 +62,13 @@ namespace AirportCorp
         {
             lbinfo_ab.Text = "";
             BinaryFormatter binaryFormatter2 = new BinaryFormatter();
-            using (FileStream fs = new FileStream("traveller.dat", FileMode.Open))
+            using (FileStream fs = new FileStream("travellers.dat", FileMode.Open))
             {
                 travellers = (List<Traveller>)binaryFormatter2.Deserialize(fs);
             }
             foreach (Traveller p in travellers)
             {
-                lbinfo_ab.Text = lbinfo_ab.Text + p.GetAll();
+                lbinfo_ab.Text = lbinfo_ab.Text + p.GetAll() + "\n";
             }
         }
 
@@ -97,7 +80,7 @@ namespace AirportCorp
             panadm.Visible = true;
 
 
-            
+
 
         }
 
@@ -120,9 +103,9 @@ namespace AirportCorp
         {
             BinaryFormatter binaryFormatter1 = new BinaryFormatter();
 
-            using (FileStream fs = new FileStream("workers.dat", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("worker1s.dat", FileMode.OpenOrCreate))
             {
-                workers = (List<Worker<string>>)binaryFormatter1.Deserialize(fs);
+                workers = (List<Worker<Airport>>)binaryFormatter1.Deserialize(fs);
 
 
             }
@@ -136,9 +119,9 @@ namespace AirportCorp
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            
 
-            foreach( Worker<string> w in workers)
+
+            foreach (Worker<Airport> w in workers)
             {
                 if (tblogin.Text == w.Getid() && tppassword.Text == w.Getpas())
                 {
@@ -148,11 +131,11 @@ namespace AirportCorp
                     k++;
 
                 }
-                
-                
+
+
             }
 
-            if(k==0)
+            if (k == 0)
             {
                 MessageBox.Show("Wrong password or login");
 
@@ -166,26 +149,51 @@ namespace AirportCorp
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
-           
 
-            
-            
-            
+
+
+
+
+
             pnstart.Visible = true;
 
         }
 
         private void btsave_Click(object sender, EventArgs e)
         {
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream("workers1.dat", FileMode.Append))
-            {
+            this.Close();
+        }
 
-                binaryFormatter.Serialize(fs, workers);
-                
+        private void lbairports_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            if (lbairports.SelectedItem == null)
+            {
+                MessageBox.Show("Виберіть аеропорт!");
 
             }
+            else
+            {
+                foreach (Worker<Airport> w in workers)
+                {
+
+                    if (w.GetPlaceOfWork().GetTown() == lbairports.SelectedItem.ToString())
+                    {
+                        lbinfo_ab.Text = w.GetAll();
+                    }
+
+
+                }
+            }
+        }
+
+        private void pnstart_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -1,31 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace AirportCorp
 {
     [Serializable]
-    class Worker<T>
+    class Worker<T> where T: Airport
     {
 
-        protected string _name { get; set; } = "admin";
-        protected string _srname { get; set; } = "admin";
 
-            
+        protected T _place_of_work { get; set; }
 
+        protected string _name { get; set; }
+        protected string _surname { get; set; }
+        protected string _id { get; set; }
 
-        protected string _place_of_work { get; set; }
-
-        protected T _id { get; set; }
 
         protected string _password { get; set; }
 
-        public Worker(string name, string surname, T id,string passw,string place_of_work):base()
+
+        public Worker(string name, string surname, string id, string passw, T place_of_work) 
         {
 
-            if (String.IsNullOrEmpty(name)||String.IsNullOrEmpty(surname)|| String.IsNullOrEmpty(place_of_work)||String.IsNullOrEmpty(passw))
+            if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(surname) || String.IsNullOrEmpty(id) || String.IsNullOrEmpty(passw))
             {
                 throw new emptyException("Строка не може бути порожньою!");
             }
@@ -33,26 +28,33 @@ namespace AirportCorp
             else
             {
                 _name = name;
-                _srname = surname;
+                _surname = surname;
+                _place_of_work = place_of_work;
+                
                 _id = id;
                 _password = passw;
-                _place_of_work = place_of_work;
+                _id = id;
             }
-            
+
 
         }
 
-        public Worker():base()
+        public Worker()
         {
-            _name = "Admin";
-            _srname = "";
+            _name = "name";
+            _surname = "surname";
             _password = "admin";
-            _place_of_work = "Kiev";
-                
-
+         
         }
 
-        public T Getid()
+        
+        public T GetPlaceOfWork()
+        {
+            return _place_of_work; 
+        }
+        
+
+        public string Getid()
         {
             return _id;
         }
@@ -61,11 +63,11 @@ namespace AirportCorp
         {
             return _password;
         }
-        public string GetAll()
+        public  string GetAll()
         {
-            return $"{_name} {_srname} {_place_of_work} ";
+            return  $"{_name} {_surname} {_place_of_work.GetAll()} ";
         }
-        
+
     }
 }
 

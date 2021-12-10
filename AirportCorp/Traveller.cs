@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Math;
 
 
@@ -27,8 +24,8 @@ namespace AirportCorp
 
         protected DateTime _arr { get; set; } = DateTime.Now;
         protected DateTime _dep { get; set; } = DateTime.Now;
-
         public delegate double Price(double distance, double price_of_travel, double visa_price);
+
         public event Price PriceHandler;
 
 
@@ -76,26 +73,34 @@ namespace AirportCorp
                 _from = from;
                 _to = to;
             }
+            if(String.IsNullOrEmpty(name))
+            {
+                throw new emptyException("NullOrEmpty string!!!");
+            }
+            else
+            {
+                _name = name;
+            }
 
             _laggage = laggage;
             _visa = visa;
-            _name = name;
+            
 
 
-           // PriceHandler += Price1;
+             PriceHandler += Price1;
         }
 
         public double GetDistanse()
         {
-            foreach (KeyValuePair<string, Tuple<int, int, int>> key in airport_Company.Getairports())
+            foreach (KeyValuePair<string, Tuple<int, int, int>> item in airport_Company.Getairports())
             {
-                if (key.Key == _from)
+                if (item.Key == _from)
                 {
-                    _from_e = Sqrt((Pow(key.Value.Item1, 2) + Pow(key.Value.Item2, 2) + Pow(key.Value.Item3, 2)));
+                    _from_e = Sqrt((Pow(item.Value.Item1, 2) + Pow(item.Value.Item2, 2) + Pow(item.Value.Item3, 2)));
                 }
-                if (key.Key == _to)
+                if (item.Key == _to)
                 {
-                    _to_e = Sqrt((Pow(key.Value.Item1, 2) + Pow(key.Value.Item2, 2) + Pow(key.Value.Item3, 2)));
+                    _to_e = Sqrt((Pow(item.Value.Item1, 2) + Pow(item.Value.Item2, 2) + Pow(item.Value.Item3, 2)));
 
                 }
             }
@@ -104,7 +109,7 @@ namespace AirportCorp
 
             return _distance;
         }
-     
+
 
         public double GetVisaPrice()
         {
@@ -140,10 +145,10 @@ namespace AirportCorp
             return base.GetAll() + $"{_from} - {_to},  {_time_of_travel} днів, Ціна за квиток: {GetPrice()}";
         }
 
-        //public double Price1(double distance, double price_of_travel, double visa_price)
-        //{
-        //    return distance * price_of_travel + visa_price;
-        //}
+        public double Price1(double distance, double price_of_travel, double visa_price)
+        {
+            return distance * price_of_travel + visa_price;
+        }
 
     }
 }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace AirportCorp
 {
-    [Serializable]
+    
     public partial class TravelRegForm : Form
     {
         List<Traveller> travellers = new List<Traveller>();
@@ -155,7 +155,7 @@ namespace AirportCorp
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            using (FileStream fs = new FileStream("traveller.dat", FileMode.Append))
+            using (FileStream fs = new FileStream("travellers.dat", FileMode.Append))
             {
 
                 formatter.Serialize(fs, travellers);

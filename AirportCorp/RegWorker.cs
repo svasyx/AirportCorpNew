@@ -14,8 +14,8 @@ namespace AirportCorp
 {
     public partial class RegWorker : Form
     {
-        Worker<string> worker;
-        List<Worker<string>> workers = new List<Worker<string>>();
+        Worker<Airport> worker;
+        List<Worker<Airport>> workers = new List<Worker<Airport>>();
 
         public RegWorker()
         {
@@ -29,7 +29,7 @@ namespace AirportCorp
         {
             try
             {
-                worker = new Worker<string>(tbname.Text, tbsrname.Text, tbid.Text, tbpass.Text, lbairport.SelectedItem.ToString());
+                worker = new Worker<Airport>(tbname.Text, tbsrname.Text, tbid.Text, tbpass.Text, new Airport(lbairport.SelectedItem.ToString()));
                 workers.Add(worker);
 
             }
@@ -60,7 +60,7 @@ namespace AirportCorp
             BinaryFormatter binaryFormatter3 = new BinaryFormatter();
 
 
-            using (FileStream fs = new FileStream("workers.dat", FileMode.Append))
+            using (FileStream fs = new FileStream("worker1s.dat", FileMode.Append))
             {
 
                 binaryFormatter3.Serialize(fs, workers);
