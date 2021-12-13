@@ -11,14 +11,15 @@ namespace AirportCorp
     {
         List<Worker<Airport>> workers = new List<Worker<Airport>>();
         List<Traveller> travellers = new List<Traveller>();
-       static  Airport airport = new Airport();
+        static  Airport airport = new Airport();
         int k;
         Worker<Airport> mainadmin = new Worker<Airport>("a", "a", "admin", "admin", airport);
         Point point = new Point(300, 150);
         public AdminForm()
         {
+
             InitializeComponent();
-            string[] routs = { "Киев", "Одеса", "Харьков", "Полтава", "Винница" };
+            string[] routs = { "Киев", "Лондон", "Париж", "Камбоджа", "Маями" };
             lbairports.Items.AddRange(routs);
             lbairports.SelectedIndexChanged += lbairports_SelectedIndexChanged;
 
@@ -61,14 +62,11 @@ namespace AirportCorp
         private void button2_Click(object sender, EventArgs e)
         {
             lbinfo_ab.Text = "";
-            BinaryFormatter binaryFormatter2 = new BinaryFormatter();
-            using (FileStream fs = new FileStream("travellers.dat", FileMode.Open))
+            using (StreamReader reader = new StreamReader("travellers.txt"))
             {
-                travellers = (List<Traveller>)binaryFormatter2.Deserialize(fs);
-            }
-            foreach (Traveller p in travellers)
-            {
-                lbinfo_ab.Text = lbinfo_ab.Text + p.GetAll() + "\n";
+                lbinfo_ab.Text = reader.ReadToEnd();
+
+
             }
         }
 
@@ -76,6 +74,7 @@ namespace AirportCorp
         {
             MessageBox.Show("Введіть ID та пароль головного адміна!");
 
+            pnstart.Visible = false; 
             panadm.Location = point;
             panadm.Visible = true;
 
@@ -96,6 +95,8 @@ namespace AirportCorp
             else
             {
                 MessageBox.Show("Wrong password or login");
+                pnstart.Visible = false;
+
             }
         }
 
@@ -131,7 +132,6 @@ namespace AirportCorp
                     k++;
 
                 }
-
 
             }
 
@@ -194,6 +194,16 @@ namespace AirportCorp
         private void pnstart_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            using (StreamReader reader = new StreamReader("bussinesmens.txt"))
+            {
+                lbinfo_ab.Text = reader.ReadToEnd();
+
+
+            }
         }
     }
 }

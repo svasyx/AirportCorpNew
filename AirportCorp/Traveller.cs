@@ -24,6 +24,7 @@ namespace AirportCorp
 
         protected DateTime _arr { get; set; } = DateTime.Now;
         protected DateTime _dep { get; set; } = DateTime.Now;
+
         public delegate double Price(double distance, double price_of_travel, double visa_price);
 
         public event Price PriceHandler;
@@ -45,7 +46,7 @@ namespace AirportCorp
         public Traveller(string name, string surname, string from, string to, int time_of_travel, bool laggage, bool visa, DateTime arr, DateTime dep) : base(name, surname)
         {
 
-            if (dep.Day - arr.Day < 0 || dep.Month - arr.Month < 0 && arr.Year == DateTime.Today.Year)
+            if (arr < DateTime.Today || arr > dep)
             {
                 throw new dateException("Виберіть правильну дату!!!", arr);
             }
@@ -121,7 +122,7 @@ namespace AirportCorp
             }
             else
             {
-                _visa_price = 130 * _time_of_travel;
+                _visa_price = 130 * GetTime();
             }
             return _visa_price;
         }
@@ -138,11 +139,15 @@ namespace AirportCorp
             return _cost_of_travel;
         }
 
+        public int GetTime()
+        {
+            return _dep.Day - _arr.Day;
+        }
 
         public override string GetAll()
         {
-
-            return base.GetAll() + $"{_from} - {_to},  {_time_of_travel} днів, Ціна за квиток: {GetPrice()}";
+           // airport_Company.GetAll();
+            return base.GetAll() + $"{_from} - {_to},  {GetTime()} днів, Ціна за квиток: {GetPrice()} Відправлення: {_arr.ToString()} Зворотній квиток: {_dep.ToString()}";
         }
 
         public double Price1(double distance, double price_of_travel, double visa_price)

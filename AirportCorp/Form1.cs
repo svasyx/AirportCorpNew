@@ -69,6 +69,7 @@ namespace AirportCorp
 
         private void bsnbtn_Click(object sender, EventArgs e)
         {
+             
             BusinessForm businessForm = new BusinessForm();
             businessForm.Show();
         }
@@ -82,6 +83,11 @@ namespace AirportCorp
         private void btclose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

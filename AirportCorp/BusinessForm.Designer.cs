@@ -43,11 +43,11 @@ namespace AirportCorp
             // 
             // btSubmit
             // 
-            this.btSubmit.Location = new System.Drawing.Point(407, 244);
+            this.btSubmit.Location = new System.Drawing.Point(445, 148);
             this.btSubmit.Name = "btSubmit";
-            this.btSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btSubmit.Size = new System.Drawing.Size(132, 23);
             this.btSubmit.TabIndex = 0;
-            this.btSubmit.Text = "Submit";
+            this.btSubmit.Text = "Створити замовлення";
             this.btSubmit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btSubmit.UseVisualStyleBackColor = true;
             this.btSubmit.Click += new System.EventHandler(this.btSubmit_Click);
@@ -55,30 +55,31 @@ namespace AirportCorp
             // infolb
             // 
             this.infolb.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.infolb.Location = new System.Drawing.Point(1, 341);
+            this.infolb.Location = new System.Drawing.Point(2, 0);
             this.infolb.Name = "infolb";
-            this.infolb.Size = new System.Drawing.Size(802, 113);
+            this.infolb.Size = new System.Drawing.Size(195, 441);
             this.infolb.TabIndex = 2;
-            this.infolb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.infolb.Text = "Інформація про замовлення:";
+            this.infolb.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.infolb.Click += new System.EventHandler(this.infolb_Click);
             // 
             // nametb
             // 
-            this.nametb.Location = new System.Drawing.Point(396, 141);
+            this.nametb.Location = new System.Drawing.Point(498, 35);
             this.nametb.Name = "nametb";
             this.nametb.Size = new System.Drawing.Size(100, 20);
             this.nametb.TabIndex = 3;
             // 
             // surtb
             // 
-            this.surtb.Location = new System.Drawing.Point(396, 167);
+            this.surtb.Location = new System.Drawing.Point(498, 61);
             this.surtb.Name = "surtb";
             this.surtb.Size = new System.Drawing.Size(100, 20);
             this.surtb.TabIndex = 3;
             // 
             // moneytb
             // 
-            this.moneytb.Location = new System.Drawing.Point(396, 193);
+            this.moneytb.Location = new System.Drawing.Point(498, 87);
             this.moneytb.Name = "moneytb";
             this.moneytb.Size = new System.Drawing.Size(100, 20);
             this.moneytb.TabIndex = 3;
@@ -87,35 +88,35 @@ namespace AirportCorp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(318, 141);
+            this.label1.Location = new System.Drawing.Point(397, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Enter Name";
+            this.label1.Text = "Введіть ім\'я:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(306, 167);
+            this.label2.Location = new System.Drawing.Point(397, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.Size = new System.Drawing.Size(95, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Enter surname";
+            this.label2.Text = "Введіть прізвище";
             // 
             // cbpeople
             // 
             this.cbpeople.AutoSize = true;
-            this.cbpeople.Location = new System.Drawing.Point(273, 196);
+            this.cbpeople.Location = new System.Drawing.Point(395, 90);
             this.cbpeople.Name = "cbpeople";
-            this.cbpeople.Size = new System.Drawing.Size(109, 13);
+            this.cbpeople.Size = new System.Drawing.Size(97, 13);
             this.cbpeople.TabIndex = 4;
-            this.cbpeople.Text = "Enter count of people";
+            this.cbpeople.Text = "Введіть к-сть осіб";
             this.cbpeople.Click += new System.EventHandler(this.label3_Click);
             // 
             // cball
             // 
             this.cball.AutoSize = true;
-            this.cball.Location = new System.Drawing.Point(343, 222);
+            this.cball.Location = new System.Drawing.Point(445, 116);
             this.cball.Name = "cball";
             this.cball.Size = new System.Drawing.Size(131, 17);
             this.cball.TabIndex = 5;
@@ -138,7 +139,7 @@ namespace AirportCorp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btclose);
             this.Controls.Add(this.cball);
@@ -150,7 +151,6 @@ namespace AirportCorp
             this.Controls.Add(this.nametb);
             this.Controls.Add(this.infolb);
             this.Controls.Add(this.btSubmit);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BusinessForm";
             this.Text = "BusinessForm";
             this.Load += new System.EventHandler(this.BusinessForm_Load);

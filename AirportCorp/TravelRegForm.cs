@@ -16,9 +16,7 @@ namespace AirportCorp
     {
         List<Traveller> travellers = new List<Traveller>();
         Traveller traveller;
-        public delegate void DisplayChanges();
-
-        public event DisplayChanges LbChange;
+        HashSet<Traveller> travellers1 = new HashSet<Traveller>();
 
 
 
@@ -28,7 +26,7 @@ namespace AirportCorp
         public TravelRegForm()
         {
             InitializeComponent();
-            string[] routs = { "Киев", "Одеса", "Харьков", "Полтава", "Винница" };
+            string[] routs = { "Киев", "Лондон", "Париж", "Камбоджа", "Маями" };
             lbfrom.Items.AddRange(routs);
             lbto.Items.AddRange(routs);
             lbfrom.SelectedIndexChanged += listBox1_SelectedIndexChanged;
@@ -40,14 +38,7 @@ namespace AirportCorp
         {
 
 
-            try
-            {
-                days = Convert.ToInt32(tbtime.Text);
-            }
-            catch(FormatException exp)
-            {
-                MessageBox.Show($"{exp.Message}");
-            }
+      
 
             
                 try
@@ -71,14 +62,15 @@ namespace AirportCorp
                         traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
                     }
                 travellers.Add(traveller);
-
+                travellers1.Add(traveller); 
                 traveller.PriceHandler += Price;
 
 
                 //ITraveler tr = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
                 //MessageBox.Show($"{tr.GetAll()}");
 
-            }
+                }
+            
             catch (minusException exp)
                 {
                     MessageBox.Show($"{exp.Message}, Ваша к-сть днів: {exp._value}!");
@@ -109,14 +101,10 @@ namespace AirportCorp
             
         }
 
-        public void ChengesShow()
-        {
-            MessageBox.Show("Changed");
-        }
+       
         private void TravelRegForm_Load(object sender, EventArgs e)
         {
             
-            LbChange += ChengesShow;
 
         }
 
@@ -138,29 +126,27 @@ namespace AirportCorp
       
         private void cbvisa_CheckedChanged(object sender, EventArgs e)
         {
-            if(cbvisa.Checked == true)
-            {
-                lbtime.Visible = false;
-                tbtime.Visible = false;
-            }
-            else
-            {
-                lbtime.Visible = true;
-                tbtime.Visible = true;
-
-            }
+   
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            using (FileStream fs = new FileStream("travellers.dat", FileMode.Append))
+            foreach (var item in travellers1)
             {
+                Console.WriteLine(item.GetAll());
+            }
 
-                formatter.Serialize(fs, travellers);
+            using (StreamWriter writer = new StreamWriter("travellers.txt",false, System.Text.Encoding.Default))
+            {
+                foreach (var item in travellers)
+                {
+                    writer.WriteLine(item.GetAll());
+                }
 
             }
+
+
+
             this.Close();
         }
 
@@ -177,7 +163,6 @@ namespace AirportCorp
         private void lbto_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-                LbChange.Invoke();
             
         }
     }

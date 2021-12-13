@@ -15,12 +15,12 @@ namespace AirportCorp
     public partial class RegWorker : Form
     {
         Worker<Airport> worker;
-        List<Worker<Airport>> workers = new List<Worker<Airport>>();
+        Stack<Worker<Airport>> workers = new Stack<Worker<Airport>>();
 
         public RegWorker()
         {
             InitializeComponent();
-            string[] airports = { "Киев", "Одеса", "Харьков", "Полтава", "Винница" };
+            string[] airports = { "Киев", "Лондон", "Париж", "Камбоджа", "Маями" };
             lbairport.Items.AddRange(airports);
             lbairport.SelectedIndexChanged += lbairport_SelectedIndexChanged;
         }
@@ -30,7 +30,7 @@ namespace AirportCorp
             try
             {
                 worker = new Worker<Airport>(tbname.Text, tbsrname.Text, tbid.Text, tbpass.Text, new Airport(lbairport.SelectedItem.ToString()));
-                workers.Add(worker);
+                workers.Push(worker);
 
             }
             catch (emptyException exp)
@@ -60,13 +60,14 @@ namespace AirportCorp
             BinaryFormatter binaryFormatter3 = new BinaryFormatter();
 
 
-            using (FileStream fs = new FileStream("worker1s.dat", FileMode.Append))
+            using (FileStream fs = new FileStream("worker1s.dat", FileMode.Create))
             {
 
                 binaryFormatter3.Serialize(fs, workers);
 
             }
             this.Close();
+
         }
     }
 }

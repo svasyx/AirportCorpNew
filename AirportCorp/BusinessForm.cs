@@ -18,7 +18,7 @@ namespace AirportCorp
         public int people_count = 0;
         
        
-        List<Bussinesman> bussinesmens = new List<Bussinesman>();
+        Queue<Bussinesman> bussinesmens = new Queue<Bussinesman>();
 
         public BusinessForm()
         {
@@ -59,12 +59,12 @@ namespace AirportCorp
                 if (cball.Checked == true)
                 {
                     bussinesman = new Bussinesman(nametb.Text, surtb.Text, true,people_count);
-                    bussinesmens.Add(bussinesman);
+                    bussinesmens.Enqueue(bussinesman);
                 }
                 if(cball.Checked == false)
                 {
                     bussinesman = new Bussinesman(nametb.Text, surtb.Text, false, people_count);
-                    bussinesmens.Add(bussinesman);
+                    bussinesmens.Enqueue(bussinesman);
                 }
 
                 //IBusinesmann pr = new Bussinesman(nametb.Text, surtb.Text, false, people_count);
@@ -91,12 +91,14 @@ namespace AirportCorp
 
         private void btclose_Click(object sender, EventArgs e)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
 
-            using (FileStream fs = new FileStream("bussinesmens.dat", FileMode.Append))
+            using (StreamWriter writer = new StreamWriter("bussinesmens.txt", false, System.Text.Encoding.Default))
             {
 
-                formatter.Serialize(fs, bussinesmens);
+                foreach (var item in bussinesmens)
+                {
+                    writer.WriteLine(item.GetAll());
+                }
 
             }
             this.Close();
