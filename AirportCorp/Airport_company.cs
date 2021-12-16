@@ -27,7 +27,7 @@ namespace AirportCorp
             airorts.Add("Киев", new Tuple<int, int, int> (0,0,0)) ;
             airorts1.Add("Киев", new Tuple<int, int, int>(0, 0, 0));
             count_of_airports++;
-
+            
             airorts.Add("Лондон", new Tuple<int, int, int>(1, 1, 1));
             airorts1.Add("Лондон", new Tuple<int, int, int>(1, 1, 1));
             count_of_airports++;

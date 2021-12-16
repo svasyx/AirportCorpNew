@@ -31,7 +31,7 @@ namespace AirportCorp
 
 
         Airport_company airport_Company = new Airport_company();
-
+        Dictionary<string, Tuple<int, int, int>> airorts;
         public Traveller() : base("name", "surname")
         {
 
@@ -74,7 +74,7 @@ namespace AirportCorp
                 _from = from;
                 _to = to;
             }
-            if(String.IsNullOrEmpty(name))
+            if (String.IsNullOrEmpty(name))
             {
                 throw new emptyException("NullOrEmpty string!!!");
             }
@@ -85,28 +85,20 @@ namespace AirportCorp
 
             _laggage = laggage;
             _visa = visa;
-            
+            airorts = airport_Company.Getairports();
 
 
-             PriceHandler += Price1;
+            PriceHandler += Price1;
         }
 
         public double GetDistanse()
         {
-            foreach (KeyValuePair<string, Tuple<int, int, int>> item in airport_Company.Getairports())
-            {
-                if (item.Key == _from)
-                {
-                    _from_e = Sqrt((Pow(item.Value.Item1, 2) + Pow(item.Value.Item2, 2) + Pow(item.Value.Item3, 2)));
-                }
-                if (item.Key == _to)
-                {
-                    _to_e = Sqrt((Pow(item.Value.Item1, 2) + Pow(item.Value.Item2, 2) + Pow(item.Value.Item3, 2)));
 
-                }
-            }
+         _from_e = Sqrt((Pow(airorts[_from].Item1, 2) + Pow(airorts[_from].Item2, 2) + Pow(airorts[_from].Item3, 2)));       
+         _to_e = Sqrt((Pow(airorts[_to].Item1, 2) + Pow(airorts[_to].Item2, 2) + Pow(airorts[_to].Item3, 2)));
 
-            _distance = Sqrt(Pow(_from_e, 2) + Pow(_to_e, 2));
+   
+          _distance = Sqrt(Pow(_from_e, 2) + Pow(_to_e, 2));
 
             return _distance;
         }
@@ -146,8 +138,8 @@ namespace AirportCorp
 
         public override string GetAll()
         {
-           // airport_Company.GetAll();
-            return base.GetAll() + $"{_from} - {_to},  {GetTime()} днів, Ціна за квиток: {GetPrice()} Відправлення: {_arr.ToString()} Зворотній квиток: {_dep.ToString()}";
+            airport_Company.GetAll();
+            return base.GetAll() + $"{_from} - {_to},  {GetTime()} днів, Ціна за квиток: {GetPrice()} Відправлення: {_arr.ToString("D")} Зворотній квиток: {_dep.ToString("D")}";
         }
 
         public double Price1(double distance, double price_of_travel, double visa_price)

@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Windows.Forms;
 
 namespace AirportCorp
 {
     public partial class AdminForm : Form
     {
-        List<Worker<Airport>> workers = new List<Worker<Airport>>();
+        Stack<Worker<Airport>> workers = new Stack<Worker<Airport>>();
         List<Traveller> travellers = new List<Traveller>();
         static  Airport airport = new Airport();
         int k;
         Worker<Airport> mainadmin = new Worker<Airport>("a", "a", "admin", "admin", airport);
+
         Point point = new Point(300, 150);
         public AdminForm()
         {
@@ -28,19 +30,14 @@ namespace AirportCorp
         private void AdminForm_Load(object sender, EventArgs e)
         {
             pnstart.Location = point;
-
         }
 
         private void lbairport_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void btnsubmit_Click(object sender, EventArgs e)
         {
-
-
-
         }
 
         private void btnprint_Click(object sender, EventArgs e)
@@ -54,19 +51,16 @@ namespace AirportCorp
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-                       
+        {             
             this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             lbinfo_ab.Text = "";
-            using (StreamReader reader = new StreamReader("travellers.txt"))
+            using (StreamReader reader = new StreamReader("travellers.txt", Encoding.GetEncoding(1251)))
             {
-                lbinfo_ab.Text = reader.ReadToEnd();
-
-
+                lbinfo_ab.Text = reader.ReadToEnd();    
             }
         }
 
@@ -78,9 +72,6 @@ namespace AirportCorp
             panadm.Location = point;
             panadm.Visible = true;
 
-
-
-
         }
 
         private void btsubmit_Click(object sender, EventArgs e)
@@ -90,7 +81,6 @@ namespace AirportCorp
                 panadm.Visible = false;
                 RegWorker regWorker = new RegWorker();
                 regWorker.Show();
-
             }
             else
             {
@@ -103,19 +93,16 @@ namespace AirportCorp
         private void btlog_Click(object sender, EventArgs e)
         {
             BinaryFormatter binaryFormatter1 = new BinaryFormatter();
-
             using (FileStream fs = new FileStream("worker1s.dat", FileMode.OpenOrCreate))
             {
-                workers = (List<Worker<Airport>>)binaryFormatter1.Deserialize(fs);
+                workers = (Stack<Worker<Airport>>)binaryFormatter1.Deserialize(fs);
 
 
             }
 
-
             pnstart.Visible = false;
             pnlogin.Visible = true;
             pnlogin.Location = point;
-
         }
 
         private void btnlogin_Click(object sender, EventArgs e)
@@ -130,33 +117,22 @@ namespace AirportCorp
                     panwork.Visible = true;
                     panwork.Location = point;
                     k++;
-
                 }
-
             }
 
             if (k == 0)
             {
                 MessageBox.Show("Wrong password or login");
-
             }
         }
 
         private void panwork_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-
-
-
-
-
-            pnstart.Visible = true;
-
+            pnstart.Visible = true;    
         }
 
         private void btsave_Click(object sender, EventArgs e)
@@ -166,7 +142,6 @@ namespace AirportCorp
 
         private void lbairports_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -174,19 +149,15 @@ namespace AirportCorp
             if (lbairports.SelectedItem == null)
             {
                 MessageBox.Show("Виберіть аеропорт!");
-
             }
             else
             {
                 foreach (Worker<Airport> w in workers)
                 {
-
                     if (w.GetPlaceOfWork().GetTown() == lbairports.SelectedItem.ToString())
                     {
                         lbinfo_ab.Text = w.GetAll();
                     }
-
-
                 }
             }
         }
@@ -198,12 +169,11 @@ namespace AirportCorp
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            using (StreamReader reader = new StreamReader("bussinesmens.txt"))
+            using (StreamReader reader = new StreamReader("bussinesmens.txt", Encoding.GetEncoding(1251)))
             {
                 lbinfo_ab.Text = reader.ReadToEnd();
-
-
             }
         }
     }
 }
+    

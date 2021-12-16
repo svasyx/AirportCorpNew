@@ -9,15 +9,15 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+    
 namespace AirportCorp
 {
     public partial class BusinessForm : Form
     {
         Bussinesman bussinesman;
         public int people_count = 0;
-        
        
+        
         Queue<Bussinesman> bussinesmens = new Queue<Bussinesman>();
 
         public BusinessForm()
@@ -60,6 +60,7 @@ namespace AirportCorp
                 {
                     bussinesman = new Bussinesman(nametb.Text, surtb.Text, true,people_count);
                     bussinesmens.Enqueue(bussinesman);
+                   
                 }
                 if(cball.Checked == false)
                 {
@@ -92,7 +93,7 @@ namespace AirportCorp
         private void btclose_Click(object sender, EventArgs e)
         {
 
-            using (StreamWriter writer = new StreamWriter("bussinesmens.txt", false, System.Text.Encoding.Default))
+            using (StreamWriter writer = new StreamWriter("bussinesmens.txt", false, System.Text.Encoding.UTF8))
             {
 
                 foreach (var item in bussinesmens)

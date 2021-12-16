@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AirportCorp
@@ -31,6 +25,7 @@ namespace AirportCorp
             {
                 worker = new Worker<Airport>(tbname.Text, tbsrname.Text, tbid.Text, tbpass.Text, new Airport(lbairport.SelectedItem.ToString()));
                 workers.Push(worker);
+                
 
             }
             catch (emptyException exp)

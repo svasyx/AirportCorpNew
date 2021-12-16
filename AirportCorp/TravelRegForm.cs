@@ -18,7 +18,7 @@ namespace AirportCorp
         Traveller traveller;
         HashSet<Traveller> travellers1 = new HashSet<Traveller>();
 
-
+        
 
         public int days = 0;
         
@@ -131,12 +131,12 @@ namespace AirportCorp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (var item in travellers1)
-            {
-                Console.WriteLine(item.GetAll());
-            }
+            //foreach (var item in travellers1)
+            //{
+            //    Console.WriteLine(item.GetAll());
+            //}
 
-            using (StreamWriter writer = new StreamWriter("travellers.txt",false, System.Text.Encoding.Default))
+            using (StreamWriter writer = new StreamWriter("travellers.txt",false, System.Text.Encoding.UTF8))
             {
                 foreach (var item in travellers)
                 {
