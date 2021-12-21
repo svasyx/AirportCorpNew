@@ -17,8 +17,9 @@ namespace AirportCorp
         List<Traveller> travellers = new List<Traveller>();
         Traveller traveller;
         HashSet<Traveller> travellers1 = new HashSet<Traveller>();
+        ITraveler tr;
 
-        
+
 
         public int days = 0;
         
@@ -123,33 +124,30 @@ namespace AirportCorp
 
             try
             {
-
                 if (cblaggage.Checked == true && cbvisa.Checked == true)
                 {
-                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, true, true, dtfrom.Value, dtback.Value);
+                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, true, true, dtfrom.Value, dtback.Value, Price);
                 }
                 else if (cblaggage.Checked == false && cbvisa.Checked == false)
                 {
-                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, false, dtfrom.Value, dtback.Value);
+                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, false, dtfrom.Value, dtback.Value, Price);
                 }
                 else if (cblaggage.Checked == true && cbvisa.Checked == false)
                 {
-                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, true, false, dtfrom.Value, dtback.Value);
+                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, true, false, dtfrom.Value, dtback.Value, Price);
                 }
                 else if (cblaggage.Checked == false && cbvisa.Checked == true)
                 {
-                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
+                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value, Price);
                 }
-
-                traveller.PriceHandler += Price;
+                //traveller.PriceHandler += Price;
                 travellers.Add(traveller);
                 travellers1.Add(traveller);
+                tr = traveller;
 
 
 
 
-                //ITraveler tr = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
-                //MessageBox.Show($"{tr.GetAll()}");
 
             }
 
@@ -165,11 +163,13 @@ namespace AirportCorp
             {
                 MessageBox.Show($"{exp2.Message}, вибрана дата: {exp2.date}");
             }
-
-
+            catch (NullReferenceException exp3)
+            {
+                MessageBox.Show(exp3.Message);
+            }
 
             lbinfo.Text = "";
-            lbinfo.Text = "Ваш квиток: " + traveller.GetAll();
+            lbinfo.Text = "Ваш квиток: " + tr.GetAll();
 
 
         }

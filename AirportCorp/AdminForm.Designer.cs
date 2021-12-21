@@ -71,7 +71,7 @@ namespace AirportCorp
             // lbinfo_ab
             // 
             this.lbinfo_ab.BackColor = System.Drawing.Color.Bisque;
-            this.lbinfo_ab.Location = new System.Drawing.Point(413, 18);
+            this.lbinfo_ab.Location = new System.Drawing.Point(413, 19);
             this.lbinfo_ab.Name = "lbinfo_ab";
             this.lbinfo_ab.Size = new System.Drawing.Size(263, 255);
             this.lbinfo_ab.TabIndex = 8;

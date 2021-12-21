@@ -92,6 +92,7 @@ namespace AirportCorp
             this.tabPage1.Controls.Add(this.tbsurnm);
             this.tabPage1.Controls.Add(this.tbname);
             this.tabPage1.Controls.Add(this.Submit_button);
+            this.tabPage1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -286,7 +287,7 @@ namespace AirportCorp
             // 
             // lbinfo
             // 
-            this.lbinfo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbinfo.BackColor = System.Drawing.Color.LightCyan;
             this.lbinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.lbinfo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lbinfo.Location = new System.Drawing.Point(5, 12);

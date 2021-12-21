@@ -44,7 +44,7 @@ namespace AirportCorp
         }
 
 
-        public Traveller(string name, string surname, string from, string to, int time_of_travel, bool laggage, bool visa, DateTime arr, DateTime dep) : base(name, surname)
+        public Traveller(string name, string surname, string from, string to, int time_of_travel, bool laggage, bool visa, DateTime arr, DateTime dep,Price obj) : base(name, surname)
         {
 
             if (arr < DateTime.Today || arr > dep)
@@ -83,11 +83,12 @@ namespace AirportCorp
             {
                 _name = name;
             }
+            PriceHandler += obj;
 
             _laggage = laggage;
             _visa = visa;
             airorts = airport_Company.Getairports();
-            PriceHandler += Price1;
+            
             _cost_of_travel = GetPrice();
 
            
@@ -145,10 +146,6 @@ namespace AirportCorp
             return base.GetAll() + $"{_from} - {_to},  {GetTime()} днів, Ціна за квиток: {_cost_of_travel} Відправлення: {_arr.ToString("D")} Зворотній квиток: {_dep.ToString("D")}";
         }
 
-        public double Price1(double distance, double price_of_travel, double visa_price)
-        {
-            return distance * price_of_travel + visa_price;
-        }
 
     }
 }
