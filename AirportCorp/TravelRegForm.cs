@@ -40,7 +40,7 @@ namespace AirportCorp
             BinaryFormatter binaryFormatter3 = new BinaryFormatter();
 
 
-            using (FileStream fs = new FileStream("travelle.dat", FileMode.Create))
+            using (FileStream fs = new FileStream("traveller.dat", FileMode.Create))
             {
 
                 binaryFormatter3.Serialize(fs, travellers);
@@ -92,21 +92,7 @@ namespace AirportCorp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //foreach (var item in travellers1)
-            //{
-            //    Console.WriteLine(item.GetAll());
-            //}
-
-            //using (StreamWriter writer = new StreamWriter("travellers.txt",false, System.Text.Encoding.UTF8))
-            //{
-            //    foreach (var item in travellers)
-            //    {
-            //        writer.WriteLine(item.GetAll());
-            //    }
-
-            //}
-
-           
+        
 
             this.Close();
         }
@@ -185,6 +171,11 @@ namespace AirportCorp
             lbinfo.Text = "";
             lbinfo.Text = "Ваш квиток: " + traveller.GetAll();
 
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
 
         }
     }

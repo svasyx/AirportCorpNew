@@ -32,7 +32,6 @@ namespace AirportCorp
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TravelRegForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -51,14 +50,15 @@ namespace AirportCorp
             this.tbsurnm = new System.Windows.Forms.TextBox();
             this.tbname = new System.Windows.Forms.TextBox();
             this.Submit_button = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lbinfo = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,18 +99,7 @@ namespace AirportCorp
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Реєстрація:";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.lbinfo);
-            this.tabPage2.Controls.Add(this.pictureBox4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(898, 536);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Перегляд інформації про рейс:";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // pictureBox3
             // 
@@ -283,6 +272,18 @@ namespace AirportCorp
             this.Submit_button.UseVisualStyleBackColor = true;
             this.Submit_button.Click += new System.EventHandler(this.Submit_button_Click_1);
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.lbinfo);
+            this.tabPage2.Controls.Add(this.pictureBox4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(898, 536);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Перегляд інформації про рейс:";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // lbinfo
             // 
             this.lbinfo.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -298,9 +299,9 @@ namespace AirportCorp
             // 
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(470, 97);
+            this.pictureBox4.Location = new System.Drawing.Point(458, 104);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(490, 354);
+            this.pictureBox4.Size = new System.Drawing.Size(539, 354);
             this.pictureBox4.TabIndex = 58;
             this.pictureBox4.TabStop = false;
             // 
@@ -318,10 +319,10 @@ namespace AirportCorp
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 

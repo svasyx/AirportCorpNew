@@ -18,6 +18,7 @@ namespace AirportCorp
         Worker<Airport> mainadmin = new Worker<Airport>("a", "a", "admin", "admin", airport);
 
         Point point = new Point(300, 150);
+        Point point2 = new Point(80, 150);
         public AdminForm()
         {
 
@@ -47,7 +48,7 @@ namespace AirportCorp
 
             foreach (Worker<Airport> w in workers)
             {
-                lbinfo_ab.Text = lbinfo_ab.Text + $"{w.GetAll()} ;\n";
+                lbinfo_ab.Text = lbinfo_ab.Text + '\n' + $"{w.GetAll()} ;\n";
             }
         }
 
@@ -59,11 +60,11 @@ namespace AirportCorp
         private void button2_Click(object sender, EventArgs e)
         {
 
-            
+            lbinfo_ab.Text = "";
 
 
 
-            BinaryFormatter binaryFormatter1 = new BinaryFormatter();
+           BinaryFormatter binaryFormatter1 = new BinaryFormatter();
             using (FileStream fs = new FileStream("traveller.dat", FileMode.OpenOrCreate))
             {
                 travellers = (List<Traveller>)binaryFormatter1.Deserialize(fs);
@@ -73,7 +74,7 @@ namespace AirportCorp
 
             foreach (var item in travellers)
             {
-                lbinfo_ab.Text = lbinfo_ab.Text + item.GetAll() + '\n';
+                lbinfo_ab.Text = lbinfo_ab.Text  + '\n' + item.GetAll() + '\n';
             }
         }
 
@@ -105,6 +106,7 @@ namespace AirportCorp
 
         private void btlog_Click(object sender, EventArgs e)
         {
+
             BinaryFormatter binaryFormatter1 = new BinaryFormatter();
             using (FileStream fs = new FileStream("worker1s.dat", FileMode.OpenOrCreate))
             {
@@ -121,6 +123,7 @@ namespace AirportCorp
         private void btnlogin_Click(object sender, EventArgs e)
         {
 
+            
 
             foreach (Worker<Airport> w in workers)
             {
@@ -128,7 +131,8 @@ namespace AirportCorp
                 {
                     pnlogin.Visible = false;
                     panwork.Visible = true;
-                    panwork.Location = point;
+                    panwork.Location = point2;
+
                     k++;
                 }
             }
@@ -165,13 +169,14 @@ namespace AirportCorp
             }
             else
             {
+                lbinfo_ab.Text = "";
                 foreach (Worker<Airport> w in workers)
                 {
 
 
                     if (w.GetPlaceOfWork().GetTown() == lbairports.SelectedItem.ToString())
                     {
-                        lbinfo_ab.Text = w.GetAll();
+                        lbinfo_ab.Text += '\n' +  w.GetAll() + '\n';
                         continue;
                     }
                 }
@@ -192,9 +197,11 @@ namespace AirportCorp
 
 
             }
+            lbinfo_ab.Text = "";
+
             foreach (var item in bussinesmens)
             {
-                lbinfo_ab.Text = lbinfo_ab.Text + item.GetAll() + '\n';
+                lbinfo_ab.Text = lbinfo_ab.Text + '\n' + item.GetAll() + '\n';
             }
         }
     }

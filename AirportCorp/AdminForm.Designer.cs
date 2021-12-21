@@ -51,6 +51,7 @@ namespace AirportCorp
             this.tppassword = new System.Windows.Forms.TextBox();
             this.pnlogin = new System.Windows.Forms.Panel();
             this.btnlogin = new System.Windows.Forms.Button();
+            this.lbcontrol = new System.Windows.Forms.Label();
             this.panadm.SuspendLayout();
             this.panwork.SuspendLayout();
             this.pnstart.SuspendLayout();
@@ -59,7 +60,7 @@ namespace AirportCorp
             // 
             // btnprint
             // 
-            this.btnprint.Location = new System.Drawing.Point(33, 75);
+            this.btnprint.Location = new System.Drawing.Point(46, 193);
             this.btnprint.Name = "btnprint";
             this.btnprint.Size = new System.Drawing.Size(191, 23);
             this.btnprint.TabIndex = 7;
@@ -69,16 +70,16 @@ namespace AirportCorp
             // 
             // lbinfo_ab
             // 
-            this.lbinfo_ab.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbinfo_ab.Location = new System.Drawing.Point(3, 158);
+            this.lbinfo_ab.BackColor = System.Drawing.Color.Bisque;
+            this.lbinfo_ab.Location = new System.Drawing.Point(413, 18);
             this.lbinfo_ab.Name = "lbinfo_ab";
-            this.lbinfo_ab.Size = new System.Drawing.Size(263, 104);
+            this.lbinfo_ab.Size = new System.Drawing.Size(263, 255);
             this.lbinfo_ab.TabIndex = 8;
             this.lbinfo_ab.Text = "Всі робітники: ";
             // 
             // btfis
             // 
-            this.btfis.Location = new System.Drawing.Point(33, 11);
+            this.btfis.Location = new System.Drawing.Point(46, 129);
             this.btfis.Margin = new System.Windows.Forms.Padding(2);
             this.btfis.Name = "btfis";
             this.btfis.Size = new System.Drawing.Size(191, 21);
@@ -118,6 +119,7 @@ namespace AirportCorp
             // 
             this.tbapass.Location = new System.Drawing.Point(102, 46);
             this.tbapass.Name = "tbapass";
+            this.tbapass.PasswordChar = '*';
             this.tbapass.Size = new System.Drawing.Size(100, 20);
             this.tbapass.TabIndex = 18;
             // 
@@ -171,16 +173,16 @@ namespace AirportCorp
             this.panwork.Controls.Add(this.btfis);
             this.panwork.Controls.Add(this.lbinfo_ab);
             this.panwork.Controls.Add(this.btnprint);
-            this.panwork.Location = new System.Drawing.Point(32, 162);
+            this.panwork.Location = new System.Drawing.Point(32, 149);
             this.panwork.Name = "panwork";
-            this.panwork.Size = new System.Drawing.Size(430, 276);
+            this.panwork.Size = new System.Drawing.Size(756, 289);
             this.panwork.TabIndex = 23;
             this.panwork.Visible = false;
             this.panwork.Paint += new System.Windows.Forms.PaintEventHandler(this.panwork_Paint);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(33, 37);
+            this.button2.Location = new System.Drawing.Point(46, 155);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(191, 23);
             this.button2.TabIndex = 13;
@@ -191,7 +193,7 @@ namespace AirportCorp
             // lbairports
             // 
             this.lbairports.FormattingEnabled = true;
-            this.lbairports.Location = new System.Drawing.Point(230, 110);
+            this.lbairports.Location = new System.Drawing.Point(243, 228);
             this.lbairports.Name = "lbairports";
             this.lbairports.Size = new System.Drawing.Size(120, 30);
             this.lbairports.TabIndex = 12;
@@ -199,7 +201,7 @@ namespace AirportCorp
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(33, 104);
+            this.button3.Location = new System.Drawing.Point(46, 222);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(191, 36);
             this.button3.TabIndex = 11;
@@ -246,6 +248,7 @@ namespace AirportCorp
             // 
             this.tppassword.Location = new System.Drawing.Point(96, 39);
             this.tppassword.Name = "tppassword";
+            this.tppassword.PasswordChar = '*';
             this.tppassword.Size = new System.Drawing.Size(100, 20);
             this.tppassword.TabIndex = 28;
             // 
@@ -272,15 +275,26 @@ namespace AirportCorp
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
+            // lbcontrol
+            // 
+            this.lbcontrol.AutoSize = true;
+            this.lbcontrol.Font = new System.Drawing.Font("Technic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbcontrol.Location = new System.Drawing.Point(12, 9);
+            this.lbcontrol.Name = "lbcontrol";
+            this.lbcontrol.Size = new System.Drawing.Size(204, 20);
+            this.lbcontrol.TabIndex = 30;
+            this.lbcontrol.Text = "Admin control panel";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panwork);
+            this.Controls.Add(this.lbcontrol);
             this.Controls.Add(this.pnlogin);
             this.Controls.Add(this.pnstart);
-            this.Controls.Add(this.panwork);
             this.Controls.Add(this.panadm);
             this.Name = "AdminForm";
             this.Text = "AdminForm";
@@ -292,6 +306,7 @@ namespace AirportCorp
             this.pnlogin.ResumeLayout(false);
             this.pnlogin.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -318,5 +333,6 @@ namespace AirportCorp
         private System.Windows.Forms.ListBox lbairports;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label lbcontrol;
     }
 }
