@@ -52,62 +52,6 @@ namespace AirportCorp
         private void Submit_button_Click(object sender, EventArgs e)
         {
 
-
-      
-
-            
-                try
-                {
-                    
-                    if (cblaggage.Checked == true && cbvisa.Checked == true)
-                    {
-                        traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, true, true,dtfrom.Value,dtback.Value);
-                    }
-                    else if (cblaggage.Checked == false && cbvisa.Checked == false)
-                    {
-                        traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, false, dtfrom.Value, dtback.Value);
-                    }
-                    else if (cblaggage.Checked == true && cbvisa.Checked == false)
-                    {
-                        traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, true, false, dtfrom.Value, dtback.Value);
-                    }
-                    else if (cblaggage.Checked == false && cbvisa.Checked == true)
-                    {
-                        traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
-                    }
-
-                traveller.PriceHandler += Price;
-                travellers.Add(traveller);
-                travellers1.Add(traveller);
-                
-
-
-
-                //ITraveler tr = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
-                //MessageBox.Show($"{tr.GetAll()}");
-
-            }
-
-            catch (minusException exp)
-                {
-                    MessageBox.Show($"{exp.Message}, Ваша к-сть днів: {exp._value}!");
-                }
-            catch(cityException exp1)
-            {
-                MessageBox.Show($"{exp1.Message}, вибране місто: {exp1._city}");
-            }
-            catch(dateException exp2)
-            {
-                MessageBox.Show($"{exp2.Message}, вибрана дата: {exp2.date}");
-            }
-
-        
-
-            lbinfo.Text = "";
-            lbinfo.Text = "Ваш квиток: " + traveller.GetAll();
-
-
-
             
 
 
@@ -181,6 +125,67 @@ namespace AirportCorp
         {
             
             
+        }
+
+        private void Submit_button_Click_1(object sender, EventArgs e)
+        {
+
+
+
+
+
+
+            try
+            {
+
+                if (cblaggage.Checked == true && cbvisa.Checked == true)
+                {
+                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, true, true, dtfrom.Value, dtback.Value);
+                }
+                else if (cblaggage.Checked == false && cbvisa.Checked == false)
+                {
+                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, false, dtfrom.Value, dtback.Value);
+                }
+                else if (cblaggage.Checked == true && cbvisa.Checked == false)
+                {
+                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, true, false, dtfrom.Value, dtback.Value);
+                }
+                else if (cblaggage.Checked == false && cbvisa.Checked == true)
+                {
+                    traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
+                }
+
+                traveller.PriceHandler += Price;
+                travellers.Add(traveller);
+                travellers1.Add(traveller);
+
+
+
+
+                //ITraveler tr = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
+                //MessageBox.Show($"{tr.GetAll()}");
+
+            }
+
+            catch (minusException exp)
+            {
+                MessageBox.Show($"{exp.Message}, Ваша к-сть днів: {exp._value}!");
+            }
+            catch (cityException exp1)
+            {
+                MessageBox.Show($"{exp1.Message}, вибране місто: {exp1._city}");
+            }
+            catch (dateException exp2)
+            {
+                MessageBox.Show($"{exp2.Message}, вибрана дата: {exp2.date}");
+            }
+
+
+
+            lbinfo.Text = "";
+            lbinfo.Text = "Ваш квиток: " + traveller.GetAll();
+
+
         }
     }
 }

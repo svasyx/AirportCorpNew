@@ -29,6 +29,7 @@ namespace AirportCorp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BusinessForm));
             this.tbreg = new System.Windows.Forms.TabControl();
             this.tbrev = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -41,9 +42,14 @@ namespace AirportCorp
             this.nametb = new System.Windows.Forms.TextBox();
             this.btSubmit = new System.Windows.Forms.Button();
             this.lbinfo = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tbreg.SuspendLayout();
             this.tbrev.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tbreg
@@ -58,6 +64,7 @@ namespace AirportCorp
             // 
             // tbrev
             // 
+            this.tbrev.Controls.Add(this.pictureBox2);
             this.tbrev.Controls.Add(this.cball);
             this.tbrev.Controls.Add(this.cbpeople);
             this.tbrev.Controls.Add(this.label2);
@@ -77,6 +84,8 @@ namespace AirportCorp
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.lbinfo);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -160,9 +169,39 @@ namespace AirportCorp
             // 
             this.lbinfo.Location = new System.Drawing.Point(6, 3);
             this.lbinfo.Name = "lbinfo";
-            this.lbinfo.Size = new System.Drawing.Size(733, 380);
+            this.lbinfo.Size = new System.Drawing.Size(363, 380);
             this.lbinfo.TabIndex = 0;
             this.lbinfo.Text = "Інформація про замовлення:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(391, 117);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(345, 263);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label3.Location = new System.Drawing.Point(399, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 25);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Ваш літак:";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(380, 70);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(343, 258);
+            this.pictureBox2.TabIndex = 30;
+            this.pictureBox2.TabStop = false;
             // 
             // BusinessForm
             // 
@@ -178,6 +217,9 @@ namespace AirportCorp
             this.tbrev.ResumeLayout(false);
             this.tbrev.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -195,5 +237,8 @@ namespace AirportCorp
         private System.Windows.Forms.TextBox nametb;
         private System.Windows.Forms.Button btSubmit;
         private System.Windows.Forms.Label lbinfo;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

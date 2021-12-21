@@ -12,7 +12,7 @@ namespace AirportCorp
     {
         Stack<Worker<Airport>> workers = new Stack<Worker<Airport>>();
         List<Traveller> travellers = new List<Traveller>();
-        List<Bussinesman> bussinesmens = new List<Bussinesman>();
+        Queue<Bussinesman> bussinesmens = new Queue<Bussinesman>();
         static  Airport airport = new Airport();
         int k;
         Worker<Airport> mainadmin = new Worker<Airport>("a", "a", "admin", "admin", airport);
@@ -73,7 +73,7 @@ namespace AirportCorp
 
             foreach (var item in travellers)
             {
-                lbinfo_ab.Text = lbinfo_ab.Text + item.GetAll();
+                lbinfo_ab.Text = lbinfo_ab.Text + item.GetAll() + '\n';
             }
         }
 
@@ -167,9 +167,12 @@ namespace AirportCorp
             {
                 foreach (Worker<Airport> w in workers)
                 {
+
+
                     if (w.GetPlaceOfWork().GetTown() == lbairports.SelectedItem.ToString())
                     {
                         lbinfo_ab.Text = w.GetAll();
+                        continue;
                     }
                 }
             }
@@ -185,13 +188,13 @@ namespace AirportCorp
             BinaryFormatter binaryFormatter1 = new BinaryFormatter();
             using (FileStream fs = new FileStream("bussinesmans.dat", FileMode.OpenOrCreate))
             {
-                bussinesmens = (List<Bussinesman>)binaryFormatter1.Deserialize(fs);
+                bussinesmens = (Queue<Bussinesman>)binaryFormatter1.Deserialize(fs);
 
 
             }
             foreach (var item in bussinesmens)
             {
-                lbinfo_ab.Text = lbinfo_ab.Text + item.GetAll();
+                lbinfo_ab.Text = lbinfo_ab.Text + item.GetAll() + '\n';
             }
         }
     }

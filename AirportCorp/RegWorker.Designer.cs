@@ -29,6 +29,7 @@ namespace AirportCorp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegWorker));
             this.panreg = new System.Windows.Forms.Panel();
             this.tbpass = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -41,7 +42,9 @@ namespace AirportCorp
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panreg.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panreg
@@ -57,7 +60,7 @@ namespace AirportCorp
             this.panreg.Controls.Add(this.label3);
             this.panreg.Controls.Add(this.label2);
             this.panreg.Controls.Add(this.label1);
-            this.panreg.Location = new System.Drawing.Point(251, 117);
+            this.panreg.Location = new System.Drawing.Point(396, 87);
             this.panreg.Name = "panreg";
             this.panreg.Size = new System.Drawing.Size(298, 216);
             this.panreg.TabIndex = 22;
@@ -155,17 +158,29 @@ namespace AirportCorp
             this.label1.TabIndex = 0;
             this.label1.Text = "Виберіть аеропорт:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(32, 65);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(273, 238);
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
+            // 
             // RegWorker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panreg);
             this.Name = "RegWorker";
             this.Text = "RegWorker";
             this.Load += new System.EventHandler(this.RegWorker_Load);
             this.panreg.ResumeLayout(false);
             this.panreg.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -184,5 +199,6 @@ namespace AirportCorp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -109,14 +109,14 @@ namespace AirportCorp
             // 
             // tbalog
             // 
-            this.tbalog.Location = new System.Drawing.Point(102, 30);
+            this.tbalog.Location = new System.Drawing.Point(102, 12);
             this.tbalog.Name = "tbalog";
             this.tbalog.Size = new System.Drawing.Size(100, 20);
             this.tbalog.TabIndex = 17;
             // 
             // tbapass
             // 
-            this.tbapass.Location = new System.Drawing.Point(102, 66);
+            this.tbapass.Location = new System.Drawing.Point(102, 46);
             this.tbapass.Name = "tbapass";
             this.tbapass.Size = new System.Drawing.Size(100, 20);
             this.tbapass.TabIndex = 18;
@@ -124,7 +124,7 @@ namespace AirportCorp
             // lbida
             // 
             this.lbida.AutoSize = true;
-            this.lbida.Location = new System.Drawing.Point(56, 33);
+            this.lbida.Location = new System.Drawing.Point(43, 19);
             this.lbida.Name = "lbida";
             this.lbida.Size = new System.Drawing.Size(37, 13);
             this.lbida.TabIndex = 19;
@@ -133,7 +133,7 @@ namespace AirportCorp
             // ibpasa
             // 
             this.ibpasa.AutoSize = true;
-            this.ibpasa.Location = new System.Drawing.Point(43, 69);
+            this.ibpasa.Location = new System.Drawing.Point(43, 46);
             this.ibpasa.Name = "ibpasa";
             this.ibpasa.Size = new System.Drawing.Size(48, 13);
             this.ibpasa.TabIndex = 20;
@@ -256,7 +256,7 @@ namespace AirportCorp
             this.pnlogin.Controls.Add(this.tblogin);
             this.pnlogin.Controls.Add(this.label7);
             this.pnlogin.Controls.Add(this.label6);
-            this.pnlogin.Location = new System.Drawing.Point(548, 259);
+            this.pnlogin.Location = new System.Drawing.Point(562, 12);
             this.pnlogin.Name = "pnlogin";
             this.pnlogin.Size = new System.Drawing.Size(226, 131);
             this.pnlogin.TabIndex = 29;
