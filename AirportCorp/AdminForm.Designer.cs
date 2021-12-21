@@ -31,7 +31,6 @@ namespace AirportCorp
         {
             this.btnprint = new System.Windows.Forms.Button();
             this.lbinfo_ab = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.btfis = new System.Windows.Forms.Button();
             this.btlog = new System.Windows.Forms.Button();
             this.btreg = new System.Windows.Forms.Button();
@@ -42,6 +41,7 @@ namespace AirportCorp
             this.panadm = new System.Windows.Forms.Panel();
             this.btsubmit = new System.Windows.Forms.Button();
             this.panwork = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.lbairports = new System.Windows.Forms.ListBox();
             this.button3 = new System.Windows.Forms.Button();
             this.pnstart = new System.Windows.Forms.Panel();
@@ -51,7 +51,6 @@ namespace AirportCorp
             this.tppassword = new System.Windows.Forms.TextBox();
             this.pnlogin = new System.Windows.Forms.Panel();
             this.btnlogin = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panadm.SuspendLayout();
             this.panwork.SuspendLayout();
             this.pnstart.SuspendLayout();
@@ -76,18 +75,6 @@ namespace AirportCorp
             this.lbinfo_ab.Size = new System.Drawing.Size(263, 104);
             this.lbinfo_ab.TabIndex = 8;
             this.lbinfo_ab.Text = "Всі робітники: ";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlText;
-            this.button1.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button1.Location = new System.Drawing.Point(768, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(20, 20);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btfis
             // 
@@ -191,6 +178,16 @@ namespace AirportCorp
             this.panwork.Visible = false;
             this.panwork.Paint += new System.Windows.Forms.PaintEventHandler(this.panwork_Paint);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(33, 37);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(191, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Отримати всі чартерні рейси";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // lbairports
             // 
             this.lbairports.FormattingEnabled = true;
@@ -275,16 +272,6 @@ namespace AirportCorp
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(33, 37);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(191, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Отримати всі чартерні рейси";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,7 +282,6 @@ namespace AirportCorp
             this.Controls.Add(this.pnstart);
             this.Controls.Add(this.panwork);
             this.Controls.Add(this.panadm);
-            this.Controls.Add(this.button1);
             this.Name = "AdminForm";
             this.Text = "AdminForm";
             this.Load += new System.EventHandler(this.AdminForm_Load);
@@ -312,7 +298,6 @@ namespace AirportCorp
         #endregion
         private System.Windows.Forms.Button btnprint;
         private System.Windows.Forms.Label lbinfo_ab;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btfis;
         private System.Windows.Forms.Button btlog;
         private System.Windows.Forms.Button btreg;

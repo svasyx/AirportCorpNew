@@ -14,9 +14,24 @@ namespace AirportCorp
         public RegWorker()
         {
             InitializeComponent();
+            FormClosing += RegWorker_FormClosing;
             string[] airports = { "Киев", "Лондон", "Париж", "Камбоджа", "Маями" };
             lbairport.Items.AddRange(airports);
             lbairport.SelectedIndexChanged += lbairport_SelectedIndexChanged;
+        }
+
+        private void RegWorker_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            BinaryFormatter binaryFormatter3 = new BinaryFormatter();
+
+
+            using (FileStream fs = new FileStream("worker1s.dat", FileMode.Create))
+            {
+
+                binaryFormatter3.Serialize(fs, workers);
+
+            }
         }
 
         private void btnsubmit_Click(object sender, EventArgs e)
@@ -52,15 +67,6 @@ namespace AirportCorp
 
         private void button3_Click(object sender, EventArgs e)
         {
-            BinaryFormatter binaryFormatter3 = new BinaryFormatter();
-
-
-            using (FileStream fs = new FileStream("worker1s.dat", FileMode.Create))
-            {
-
-                binaryFormatter3.Serialize(fs, workers);
-
-            }
             this.Close();
 
         }

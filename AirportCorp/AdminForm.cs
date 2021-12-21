@@ -12,6 +12,7 @@ namespace AirportCorp
     {
         Stack<Worker<Airport>> workers = new Stack<Worker<Airport>>();
         List<Traveller> travellers = new List<Traveller>();
+        List<Bussinesman> bussinesmens = new List<Bussinesman>();
         static  Airport airport = new Airport();
         int k;
         Worker<Airport> mainadmin = new Worker<Airport>("a", "a", "admin", "admin", airport);
@@ -57,10 +58,22 @@ namespace AirportCorp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            lbinfo_ab.Text = "";
-            using (StreamReader reader = new StreamReader("travellers.txt", Encoding.GetEncoding(1251)))
+
+            
+
+
+
+            BinaryFormatter binaryFormatter1 = new BinaryFormatter();
+            using (FileStream fs = new FileStream("traveller.dat", FileMode.OpenOrCreate))
             {
-                lbinfo_ab.Text = reader.ReadToEnd();    
+                travellers = (List<Traveller>)binaryFormatter1.Deserialize(fs);
+
+
+            }
+
+            foreach (var item in travellers)
+            {
+                lbinfo_ab.Text = lbinfo_ab.Text + item.GetAll();
             }
         }
 
@@ -169,9 +182,16 @@ namespace AirportCorp
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            using (StreamReader reader = new StreamReader("bussinesmens.txt", Encoding.GetEncoding(1251)))
+            BinaryFormatter binaryFormatter1 = new BinaryFormatter();
+            using (FileStream fs = new FileStream("bussinesmans.dat", FileMode.OpenOrCreate))
             {
-                lbinfo_ab.Text = reader.ReadToEnd();
+                bussinesmens = (List<Bussinesman>)binaryFormatter1.Deserialize(fs);
+
+
+            }
+            foreach (var item in bussinesmens)
+            {
+                lbinfo_ab.Text = lbinfo_ab.Text + item.GetAll();
             }
         }
     }

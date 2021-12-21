@@ -26,11 +26,26 @@ namespace AirportCorp
         public TravelRegForm()
         {
             InitializeComponent();
+            FormClosing += TravelRegForm_FormClosing;
             string[] routs = { "Киев", "Лондон", "Париж", "Камбоджа", "Маями" };
             lbfrom.Items.AddRange(routs);
             lbto.Items.AddRange(routs);
             lbfrom.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             lbto.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+
+        }
+
+        private void TravelRegForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BinaryFormatter binaryFormatter3 = new BinaryFormatter();
+
+
+            using (FileStream fs = new FileStream("travelle.dat", FileMode.Create))
+            {
+
+                binaryFormatter3.Serialize(fs, travellers);
+
+            }
 
         }
 
@@ -44,7 +59,6 @@ namespace AirportCorp
                 try
                 {
                     
-
                     if (cblaggage.Checked == true && cbvisa.Checked == true)
                     {
                         traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, true, true,dtfrom.Value,dtback.Value);
@@ -61,16 +75,19 @@ namespace AirportCorp
                     {
                         traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
                     }
-                travellers.Add(traveller);
-                travellers1.Add(traveller); 
+
                 traveller.PriceHandler += Price;
+                travellers.Add(traveller);
+                travellers1.Add(traveller);
+                
+
 
 
                 //ITraveler tr = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value);
                 //MessageBox.Show($"{tr.GetAll()}");
 
-                }
-            
+            }
+
             catch (minusException exp)
                 {
                     MessageBox.Show($"{exp.Message}, Ваша к-сть днів: {exp._value}!");
@@ -136,16 +153,16 @@ namespace AirportCorp
             //    Console.WriteLine(item.GetAll());
             //}
 
-            using (StreamWriter writer = new StreamWriter("travellers.txt",false, System.Text.Encoding.UTF8))
-            {
-                foreach (var item in travellers)
-                {
-                    writer.WriteLine(item.GetAll());
-                }
+            //using (StreamWriter writer = new StreamWriter("travellers.txt",false, System.Text.Encoding.UTF8))
+            //{
+            //    foreach (var item in travellers)
+            //    {
+            //        writer.WriteLine(item.GetAll());
+            //    }
 
-            }
+            //}
 
-
+           
 
             this.Close();
         }

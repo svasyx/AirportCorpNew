@@ -27,6 +27,7 @@ namespace AirportCorp
 
         public delegate double Price(double distance, double price_of_travel, double visa_price);
 
+        [field: NonSerialized]
         public event Price PriceHandler;
 
 
@@ -86,9 +87,10 @@ namespace AirportCorp
             _laggage = laggage;
             _visa = visa;
             airorts = airport_Company.Getairports();
-
-
             PriceHandler += Price1;
+            _cost_of_travel = GetPrice();
+
+           
         }
 
         public double GetDistanse()
@@ -103,6 +105,7 @@ namespace AirportCorp
             return _distance;
         }
 
+       
 
         public double GetVisaPrice()
         {
@@ -139,7 +142,7 @@ namespace AirportCorp
         public override string GetAll()
         {
             airport_Company.GetAll();
-            return base.GetAll() + $"{_from} - {_to},  {GetTime()} днів, Ціна за квиток: {GetPrice()} Відправлення: {_arr.ToString("D")} Зворотній квиток: {_dep.ToString("D")}";
+            return base.GetAll() + $"{_from} - {_to},  {GetTime()} днів, Ціна за квиток: {_cost_of_travel} Відправлення: {_arr.ToString("D")} Зворотній квиток: {_dep.ToString("D")}";
         }
 
         public double Price1(double distance, double price_of_travel, double visa_price)

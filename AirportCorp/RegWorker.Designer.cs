@@ -30,7 +30,6 @@ namespace AirportCorp
         private void InitializeComponent()
         {
             this.panreg = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.tbpass = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -62,18 +61,6 @@ namespace AirportCorp
             this.panreg.Name = "panreg";
             this.panreg.Size = new System.Drawing.Size(298, 216);
             this.panreg.TabIndex = 22;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button3.Location = new System.Drawing.Point(768, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(20, 20);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "X";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // tbpass
             // 
@@ -174,7 +161,6 @@ namespace AirportCorp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panreg);
-            this.Controls.Add(this.button3);
             this.Name = "RegWorker";
             this.Text = "RegWorker";
             this.Load += new System.EventHandler(this.RegWorker_Load);
@@ -187,7 +173,6 @@ namespace AirportCorp
         #endregion
 
         private System.Windows.Forms.Panel panreg;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox tbpass;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

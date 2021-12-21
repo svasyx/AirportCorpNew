@@ -10,8 +10,7 @@ namespace AirportCorp
     public class Person : IPrintable
     {
         protected string _name { get; set; } = "Ivan";
-        protected string _surname
-        { get; set; } = "Sachno";
+        protected string _surname { get; set; } = "Sachno";
 
         public Person()
         {

@@ -23,6 +23,20 @@ namespace AirportCorp
         public BusinessForm()
         {
             InitializeComponent();
+            FormClosing += BusinessForm_FormClosing;
+        }
+
+        private void BusinessForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BinaryFormatter binaryFormatter3 = new BinaryFormatter();
+
+
+            using (FileStream fs = new FileStream("bussinesmans.dat", FileMode.Create))
+            {
+
+                binaryFormatter3.Serialize(fs, bussinesmens);
+
+            }
         }
 
         private void BusinessForm_Load(object sender, EventArgs e)
@@ -45,39 +59,7 @@ namespace AirportCorp
 
         private void btSubmit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                people_count = Convert.ToInt32(moneytb.Text);
-            }
-            catch(FormatException exp)
-            {
-                MessageBox.Show($"{exp.Message}");
-            }
             
-            try
-            {
-                if (cball.Checked == true)
-                {
-                    bussinesman = new Bussinesman(nametb.Text, surtb.Text, true,people_count);
-                    bussinesmens.Enqueue(bussinesman);
-                   
-                }
-                if(cball.Checked == false)
-                {
-                    bussinesman = new Bussinesman(nametb.Text, surtb.Text, false, people_count);
-                    bussinesmens.Enqueue(bussinesman);
-                }
-
-                //IBusinesmann pr = new Bussinesman(nametb.Text, surtb.Text, false, people_count);
-                //MessageBox.Show($"{pr.GetAll()}");
-
-                infolb.Text ="Ваше замовлення: " + bussinesman.GetAll();
-            }
-
-            catch (minusException exp)
-            {
-                MessageBox.Show($"{exp.Message} Ваша к-сть грошей: {exp._value}");
-            }
         }
 
         private void moneytb_TextChanged(object sender, EventArgs e)
@@ -92,17 +74,75 @@ namespace AirportCorp
 
         private void btclose_Click(object sender, EventArgs e)
         {
+           
+            this.Close();
+        }
 
-            using (StreamWriter writer = new StreamWriter("bussinesmens.txt", false, System.Text.Encoding.UTF8))
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void infolb_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btSubmit_Click_1(object sender, EventArgs e)
+        {
+        }
+
+        private void tabPage1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btSubmit_Click_2(object sender, EventArgs e)
+        {
+
+            try
             {
+                people_count = Convert.ToInt32(moneytb.Text);
+            }
+            catch (FormatException exp)
+            {
+                MessageBox.Show($"{exp.Message}");
+            }
 
-                foreach (var item in bussinesmens)
+            try
+            {
+                if (cball.Checked == true)
                 {
-                    writer.WriteLine(item.GetAll());
+                    bussinesman = new Bussinesman(nametb.Text, surtb.Text, true, people_count);
+                    bussinesmens.Enqueue(bussinesman);
+
+                }
+                if (cball.Checked == false)
+                {
+                    bussinesman = new Bussinesman(nametb.Text, surtb.Text, false, people_count);
+                    bussinesmens.Enqueue(bussinesman);
                 }
 
+                //IBusinesmann pr = new Bussinesman(nametb.Text, surtb.Text, false, people_count);
+                //MessageBox.Show($"{pr.GetAll()}");
+
+                lbinfo.Text = "Ваше замовлення: " + bussinesman.GetAll();
             }
-            this.Close();
+
+            catch (minusException exp)
+            {
+                MessageBox.Show($"{exp.Message} Ваша к-сть грошей: {exp._value}");
+            }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
