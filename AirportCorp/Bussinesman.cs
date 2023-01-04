@@ -9,6 +9,8 @@ namespace AirportCorp
     [Serializable]
     class Bussinesman : Person, IPrintable, IBusinesmann
     {
+
+        //поля класу
         protected int _count_of_flight_ { set; get; } = 10000;
         protected int _count_of_people { set; get; } = 0;
 
@@ -16,6 +18,8 @@ namespace AirportCorp
 
         protected int _capacity_of_plane { get; set; } = 10;
 
+
+        //конструктори класу
         public Bussinesman(string name, string surname) : base(name, surname)
         {
 
@@ -39,6 +43,8 @@ namespace AirportCorp
             }
             
         }
+
+        //отримання інформації про об'єкт
         public override string GetAll()
         {
             return base.GetAll() + $"Count of $: {_count_of_flight_}";

@@ -5,7 +5,7 @@ namespace AirportCorp
     [Serializable]
     class Worker<T> where T: Airport
     {
-
+        //поля класу
 
         protected T _place_of_work { get; set; }
 
@@ -16,7 +16,7 @@ namespace AirportCorp
 
         protected string _password { get; set; }
 
-
+        //конструктор класу
         public Worker(string name, string surname, string id, string passw, T place_of_work) 
         {
 
@@ -47,7 +47,7 @@ namespace AirportCorp
          
         }
 
-        
+        //гетери
         public T GetPlaceOfWork()
         {
             return _place_of_work; 

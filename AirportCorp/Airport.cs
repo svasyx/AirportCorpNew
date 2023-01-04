@@ -9,8 +9,13 @@ namespace AirportCorp
     [Serializable]
     internal class Airport
     {
+        //поля класу
         protected string _town { set; get; } = "Home town";
 
+
+
+
+        //конструктори класу
         public Airport(string town) 
         {
             _town = town;
@@ -23,6 +28,9 @@ namespace AirportCorp
             _town = "Kyiv";
         }
 
+
+
+        //гетери
         public string GetTown()
         {
             return _town;

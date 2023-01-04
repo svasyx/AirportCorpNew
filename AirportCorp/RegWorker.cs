@@ -8,13 +8,16 @@ namespace AirportCorp
 {
     public partial class RegWorker : Form
     {
+        //ініціалізація колекцій
         Worker<Airport> worker;
         Stack<Worker<Airport>> workers = new Stack<Worker<Airport>>();
 
         public RegWorker()
         {
             InitializeComponent();
+            //івент
             FormClosing += RegWorker_FormClosing;
+            //додавання маршрутів
             string[] airports = { "Киев", "Лондон", "Париж", "Камбоджа", "Маями" };
             lbairport.Items.AddRange(airports);
             lbairport.SelectedIndexChanged += lbairport_SelectedIndexChanged;
@@ -22,7 +25,7 @@ namespace AirportCorp
 
         private void RegWorker_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            //серіалізація у файл
             BinaryFormatter binaryFormatter3 = new BinaryFormatter();
 
 
@@ -36,13 +39,17 @@ namespace AirportCorp
 
         private void btnsubmit_Click(object sender, EventArgs e)
         {
+            //створення об'єкту з данними з форми
             try
             {
                 worker = new Worker<Airport>(tbname.Text, tbsrname.Text, tbid.Text, tbpass.Text, new Airport(lbairport.SelectedItem.ToString()));
                 workers.Push(worker);
-                
+
 
             }
+
+            //відслідковування виключень
+
             catch (emptyException exp)
             {
                 MessageBox.Show(exp.Message);

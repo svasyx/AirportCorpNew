@@ -9,6 +9,8 @@ namespace AirportCorp
     [Serializable]
     public class Person : IPrintable
     {
+
+        //поля класу
         protected string _name { get; set; } = "Ivan";
         protected string _surname { get; set; } = "Sachno";
 
@@ -17,6 +19,8 @@ namespace AirportCorp
 
         }
 
+
+        //конструктор
         public Person(string name, string surname)
         {
             if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(surname))
@@ -29,6 +33,8 @@ namespace AirportCorp
                 _surname = surname;
             }
         }
+
+        //отримання інформації про об'єкт
         public virtual string GetAll()
         {
             return $"{_name},{_surname} ";

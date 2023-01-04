@@ -8,7 +8,7 @@ namespace AirportCorp
     [Serializable]
     public class Traveller : Person, IPrintable, ITraveler, IComparable<Traveller>
     {
-
+        //поля класу
         protected string _from { get; set; } = "home";
         protected string _to { get; set; } = "home";
         protected int _time_of_travel { get; set; } = 0;
@@ -33,6 +33,8 @@ namespace AirportCorp
 
         Airport_company airport_Company = new Airport_company();
         Dictionary<string, Tuple<int, int, int>> airorts;
+
+        //конструктор класу
         public Traveller() : base("name", "surname")
         {
 
@@ -43,7 +45,7 @@ namespace AirportCorp
             return _name.CompareTo(tr._name);
         }
 
-
+        //конструктор класу
         public Traveller(string name, string surname, string from, string to, int time_of_travel, bool laggage, bool visa, DateTime arr, DateTime dep,Price obj) : base(name, surname)
         {
 
@@ -94,6 +96,8 @@ namespace AirportCorp
            
         }
 
+
+        //отримання відстані
         public double GetDistanse()
         {
 
@@ -107,7 +111,7 @@ namespace AirportCorp
         }
 
        
-
+        //отримання ціни візи
         public double GetVisaPrice()
         {
 
@@ -135,11 +139,13 @@ namespace AirportCorp
             return _cost_of_travel;
         }
 
+        //Отримання часу
         public int GetTime()
         {
             return _dep.Day - _arr.Day;
         }
 
+        //отримання інформації про об'єкт
         public override string GetAll()
         {
             airport_Company.GetAll();

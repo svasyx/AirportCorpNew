@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace AirportCorp
 {
+
+    //класи викоючень
     class minusException : Exception
     {
         public int _value { get; set; }

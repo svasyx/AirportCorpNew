@@ -14,6 +14,8 @@ namespace AirportCorp
     
     public partial class TravelRegForm : Form
     {
+        //ініціалізація полів
+
         List<Traveller> travellers = new List<Traveller>();
         Traveller traveller;
         HashSet<Traveller> travellers1 = new HashSet<Traveller>();
@@ -27,7 +29,12 @@ namespace AirportCorp
         public TravelRegForm()
         {
             InitializeComponent();
+
+            // івент
             FormClosing += TravelRegForm_FormClosing;
+
+            //заповнення маршрутів призначення
+
             string[] routs = { "Киев", "Лондон", "Париж", "Камбоджа", "Маями" };
             lbfrom.Items.AddRange(routs);
             lbto.Items.AddRange(routs);
@@ -38,6 +45,9 @@ namespace AirportCorp
 
         private void TravelRegForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+
+            // сереалізація в файл
+
             BinaryFormatter binaryFormatter3 = new BinaryFormatter();
 
 
@@ -100,6 +110,7 @@ namespace AirportCorp
 
         public double Price(double distance, double price_of_travel, double visa_price)
         {
+            //отримання ціни
             return distance * price_of_travel + visa_price;
         }
 
@@ -119,7 +130,7 @@ namespace AirportCorp
 
 
 
-
+            //створення об'єктів у відповідності з полями у формі
 
 
             try
@@ -141,6 +152,8 @@ namespace AirportCorp
                     traveller = new Traveller(tbname.Text, tbsurnm.Text, lbfrom.SelectedItem.ToString(), lbto.SelectedItem.ToString(), days, false, true, dtfrom.Value, dtback.Value, Price);
                 }
                 //traveller.PriceHandler += Price;
+
+                // додавання у списки
                 travellers.Add(traveller);
                 travellers1.Add(traveller);
                 tr = traveller;
@@ -150,7 +163,7 @@ namespace AirportCorp
 
 
             }
-
+            //відслідковування виключень
             catch (minusException exp)
             {
                 MessageBox.Show($"{exp.Message}, Ваша к-сть днів: {exp._value}!");
@@ -168,6 +181,8 @@ namespace AirportCorp
                 MessageBox.Show(exp3.Message);
             }
 
+
+            //вивід
             lbinfo.Text = "";
             lbinfo.Text = "Ваш квиток: " + tr.GetAll();
 

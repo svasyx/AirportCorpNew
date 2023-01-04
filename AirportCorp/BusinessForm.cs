@@ -14,6 +14,7 @@ namespace AirportCorp
 {
     public partial class BusinessForm : Form
     {
+        //ініціалізація полей
         Bussinesman bussinesman;
         public int people_count = 0;
        
@@ -28,6 +29,9 @@ namespace AirportCorp
 
         private void BusinessForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+
+            //серіалізація у файл
+
             BinaryFormatter binaryFormatter3 = new BinaryFormatter();
 
 
@@ -99,21 +103,24 @@ namespace AirportCorp
 
         private void btSubmit_Click_2(object sender, EventArgs e)
         {
-
+            
             try
             {
                 people_count = Convert.ToInt32(moneytb.Text);
             }
+            //відслідковування помилок
             catch (FormatException exp)
             {
                 MessageBox.Show($"{exp.Message}");
             }
+            //створення об'єктів з даними з форми
 
             try
             {
                 if (cball.Checked == true)
                 {
                     bussinesman = new Bussinesman(nametb.Text, surtb.Text, true, people_count);
+                    //додавання об'єкту у чергу
                     bussinesmens.Enqueue(bussinesman);
 
                 }
@@ -122,13 +129,13 @@ namespace AirportCorp
                     bussinesman = new Bussinesman(nametb.Text, surtb.Text, false, people_count);
                     bussinesmens.Enqueue(bussinesman);
                 }
-
+                //використання інтерфейсу
                 //IBusinesmann pr = new Bussinesman(nametb.Text, surtb.Text, false, people_count);
                 //MessageBox.Show($"{pr.GetAll()}");
 
                 lbinfo.Text = "Ваше замовлення: " + bussinesman.GetAll();
             }
-
+            //відслідковування помилок
             catch (minusException exp)
             {
                 MessageBox.Show($"{exp.Message} Ваша к-сть грошей: {exp._value}");

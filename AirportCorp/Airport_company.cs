@@ -11,6 +11,10 @@ namespace AirportCorp
     [Serializable]
     class Airport_company:IPrintable
     {
+
+
+        //словники з місцем розташування аеропортів
+
         Dictionary<string, Tuple<int,int,int>> airorts = new Dictionary<string, Tuple<int, int, int>>();
         SortedList<string, Tuple<int, int, int>> airorts1 = new SortedList<string, Tuple<int, int, int>>();
 
@@ -19,7 +23,7 @@ namespace AirportCorp
         protected int count_of_airports { get; set; } = 0;
 
         
-
+        //конструктор класу
 
         public Airport_company()
         {
@@ -48,11 +52,15 @@ namespace AirportCorp
             count_of_airports++;
 
         }
+
+        //гетер
         public Dictionary<string, Tuple<int, int, int>> Getairports()
         {
             return airorts;
         }
        
+
+        //отримання інформації про об'єкт
         public virtual string GetAll()
         {
             foreach(KeyValuePair<string, Tuple<int, int, int>> keyValue in airorts1)

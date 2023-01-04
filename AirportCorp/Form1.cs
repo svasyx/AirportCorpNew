@@ -63,25 +63,31 @@ namespace AirportCorp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //відкриття форми по кліку
             TravelRegForm regForm = new TravelRegForm();
             regForm.Show();
         }
 
         private void bsnbtn_Click(object sender, EventArgs e)
         {
-             
+            //відкриття форми по кліку
+
             BusinessForm businessForm = new BusinessForm();
             businessForm.Show();
         }
 
         private void btAdmin_Click(object sender, EventArgs e)
         {
+            //відкриття форми по кліку
+
             AdminForm adForm = new AdminForm();
             adForm.Show();
         }
 
         private void btclose_Click(object sender, EventArgs e)
         {
+            //закриття форми по кліку
+
             this.Close();
         }
 

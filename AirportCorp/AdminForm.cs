@@ -10,6 +10,7 @@ namespace AirportCorp
 {
     public partial class AdminForm : Form
     {
+        //ініціалізація колекцій та полей
         Stack<Worker<Airport>> workers = new Stack<Worker<Airport>>();
         List<Traveller> travellers = new List<Traveller>();
         Queue<Bussinesman> bussinesmens = new Queue<Bussinesman>();
@@ -23,6 +24,7 @@ namespace AirportCorp
         {
 
             InitializeComponent();
+            //додавання маршрутів
             string[] routs = { "Киев", "Лондон", "Париж", "Камбоджа", "Маями" };
             lbairports.Items.AddRange(routs);
             lbairports.SelectedIndexChanged += lbairports_SelectedIndexChanged;
@@ -43,7 +45,9 @@ namespace AirportCorp
         }
 
         private void btnprint_Click(object sender, EventArgs e)
+
         {
+            //виведення всього у форму
             lbinfo_ab.Text = "";
 
             foreach (Worker<Airport> w in workers)
@@ -54,6 +58,7 @@ namespace AirportCorp
 
         private void button1_Click(object sender, EventArgs e)
         {             
+            //закриття по кліку
             this.Close();
         }
 
@@ -63,7 +68,7 @@ namespace AirportCorp
             lbinfo_ab.Text = "";
 
 
-
+            //десереалізація з файлу
            BinaryFormatter binaryFormatter1 = new BinaryFormatter();
             using (FileStream fs = new FileStream("traveller.dat", FileMode.OpenOrCreate))
             {
@@ -71,7 +76,7 @@ namespace AirportCorp
 
 
             }
-
+            //виведення у форму
             foreach (var item in travellers)
             {
                 lbinfo_ab.Text = lbinfo_ab.Text  + '\n' + item.GetAll() + '\n';
@@ -81,7 +86,7 @@ namespace AirportCorp
         private void btreg_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Введіть ID та пароль головного адміна!");
-
+            //включення чи виключення вікна введення паролю
             pnstart.Visible = false; 
             panadm.Location = point;
             panadm.Visible = true;
@@ -90,6 +95,7 @@ namespace AirportCorp
 
         private void btsubmit_Click(object sender, EventArgs e)
         {
+            //створення об'єкту з даними з форми
             if (mainadmin.Getid() == tbalog.Text && mainadmin.Getpas() == tbapass.Text)
             {
                 panadm.Visible = false;
@@ -106,7 +112,7 @@ namespace AirportCorp
 
         private void btlog_Click(object sender, EventArgs e)
         {
-
+            //десереалізація з файлу
             BinaryFormatter binaryFormatter1 = new BinaryFormatter();
             using (FileStream fs = new FileStream("worker1s.dat", FileMode.OpenOrCreate))
             {
@@ -114,7 +120,7 @@ namespace AirportCorp
 
 
             }
-
+            //включення чи виключення панелей
             pnstart.Visible = false;
             pnlogin.Visible = true;
             pnlogin.Location = point;
@@ -123,7 +129,7 @@ namespace AirportCorp
         private void btnlogin_Click(object sender, EventArgs e)
         {
 
-            
+            //вхід у систему адмінки по паролю
 
             foreach (Worker<Airport> w in workers)
             {
@@ -163,6 +169,8 @@ namespace AirportCorp
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+
+            //фільтр за аеропортом
             if (lbairports.SelectedItem == null)
             {
                 MessageBox.Show("Виберіть аеропорт!");
@@ -190,6 +198,8 @@ namespace AirportCorp
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            //десереалізація з файлу
+
             BinaryFormatter binaryFormatter1 = new BinaryFormatter();
             using (FileStream fs = new FileStream("bussinesmans.dat", FileMode.OpenOrCreate))
             {
@@ -198,7 +208,7 @@ namespace AirportCorp
 
             }
             lbinfo_ab.Text = "";
-
+            //виведення у форму
             foreach (var item in bussinesmens)
             {
                 lbinfo_ab.Text = lbinfo_ab.Text + '\n' + item.GetAll() + '\n';
